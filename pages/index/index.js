@@ -1,6 +1,6 @@
 // pages/sea/sea.js
-// const util = require('../../util/util.js');
-// 
+const util = require('../../util/util.js');
+const api = require('../../api/api.js');
 Page({
 
   /**
@@ -42,29 +42,27 @@ Page({
 // 			url:'/pages/detail/detail?id='+id
 // 		})
 	},
-	seaAll:function(){
-
+	productAll:function(){
+		let params = {};
+		params.pageNo = this.data.pageNo;
+		params.pageSize = this.data.pageSize;
 		
-		
-// 		let params = {};
-// 		params.pageNo = this.data.pageNo;
-// 		params.pageSize = this.data.pageSize;
-// 		if(this.data.headerIndex==0){
-// 			
-// 		}else{
-// 			params.type = this.data.headerIndex;
-// 		}
-// 		goodApi.seaAll(params).then((res)=>{
-// 			if(res.data.code==0){
-// 				let _list = res.data.data;
-// 				let list = this.data.list;
-// 				list = list.concat(_list);
-// 				console.log(list)
-// 				this.setData({
-// 					list:list
-// 				})
-// 			}
-// 		})
+		if(this.data.headerIndex==0){
+			
+		}else{
+			params.type = this.data.headerIndex;
+		}
+		api.productAll(params).then((res)=>{
+			if(res.data.code==0){
+				let _list = res.data.data;
+				let list = this.data.list;
+				list = list.concat(_list);
+				console.log(list)
+				this.setData({
+					list:list
+				})
+			}
+		})
 	},
 	getList:function(headerIndex){
 		

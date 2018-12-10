@@ -31,7 +31,7 @@ const request = (url, params, method) =>{
 // 			})
 // 		}
 		wx.request({
-			url:url,
+			url:"http://47.110.56.193/api/"+url,
 			method: method,
 			data:data,
 			// header:header,
