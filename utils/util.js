@@ -14,6 +14,33 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+
+const request = (url, params, method) =>{
+	return new Promise((resolve,reject)=>{
+// 		let token = wx.getStorageSync("token")
+// 		let header = {};
+// 		if(token){
+// 			header = {
+// 				"Authorization":token
+// 			}
+// 		}else if(url=="wxLogin"){
+// 			header={};
+// 		}else{
+// 			wx.redirectTo({
+// 				url:'/pages/index/index'
+// 			})
+// 		}
+		wx.request({
+			url:url,
+			method: method,
+			data:data,
+			// header:header,
+			success:resolve,
+			fail: reject
+		})
+	})
+}
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+	request:request
 }
